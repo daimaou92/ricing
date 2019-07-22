@@ -1,0 +1,185 @@
+[colors]
+yellow = #f7d629
+orange = #ff9400
+blue = #3b92ef
+darkyellow = #be9c07
+black = #000000
+white = #ffffff
+grey = #5d5d5d
+red =  #c4302b
+transparent = #00000000
+blurred30 = #4c000000
+blurred40 = #66000000
+blurred50 = #7f000000
+blurred60 = #99000000
+blurred70 = #b2000000
+blurred75 = #bf000000
+blurred80 = #cc000000
+blurred90 = #e5000000
+blurred30white = #4cffffff
+blurred40white = #66ffffff
+blurred50white = #7fffffff 
+blurred60white = #99ffffff
+blurred70white = #b2ffffff
+blurred75white = #bfffffff
+blurred80white = #ccffffff
+blurred90white = #e5ffffff
+
+[bar/dark]
+width = 100%
+height = 30
+border-size = 0
+bottom = false
+monitor = eDP1
+wm-restack = i3
+override-redirect = false
+
+font-0 = "InconsolataGo Nerd Font:size=12;3"
+font-1 = "SF Mono:style=Solid:pixelsize=12;3"
+font-2 = "SF Mono:style=Regular:pixelsize=12;3"
+font-3 = "SF Mono:pixelsize=12;3"
+
+fixed-center = true
+padding-left = 3
+padding-right = 3
+module-margin = 1.5
+
+tray-position = right
+
+modules-left = i3
+modules-center = date time
+modules-right = cpu volume backlight battery
+
+line-size = 3
+
+background = ${colors.blurred30}
+foreground = ${colors.white}
+
+[module/i3]
+type = internal/i3
+
+format = <label-state> <label-mode>
+index-sort = true
+wrapping-scroll = false
+pin-workspaces = true
+strip-wsnumbers = true
+enable-scroll = true
+
+label-mode-padding = 0
+
+
+label-focused-underline = ${colors.blue}
+label-focused-padding-right = 1
+
+label-unfocused-padding-right = 1
+
+label-urgent-padding-right = 1
+
+label-visible-padding-right = 1
+
+[module/time]
+type = internal/date
+interval = 1.0
+date =  %H:%M
+
+[module/date]
+type = internal/date
+date =  %e %B - %A
+label = %date%
+
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+poll-interval = 1
+full-at = 95
+label-discharging = %percentage%%
+label-charging = %percentage%%
+label-full = %percentage%%
+
+format-discharging = <ramp-capacity> <label-discharging>
+format-full = <ramp-capacity> <label-full>
+format-charging =  <label-charging>
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+
+;format-background = ${colors.blurred30}
+; format-foreground = ${colors.white}
+
+[module/volume]
+type = internal/alsa
+format-volume = <ramp-volume> <label-volume>
+format-muted =  0%
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+
+; label-volume-background = ${colors.blurred30}
+; label-volume-foreground = ${colors.white}
+; ramp-volume-background = ${colors.blurred30}
+; ramp-volume-foreground = ${colors.white}
+; format-foreground = ${colors.white}
+; format-background = ${colors.blurred30}
+
+[module/backlight]
+type = internal/backlight
+card = intel_backlight
+format = <ramp> <label>
+label = %percentage%%
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+
+; label-background = ${colors.blurred30}
+; label-foreground = ${colors.white}
+
+[module/wlan]
+type = internal/network
+interface = wlp2s0
+interval = 5
+label-connected =  %essid%
+label-disconnected =  Not Connected
+
+; label-background = ${colors.blurred30}
+; label-foreground = ${colors.white}
+
+[module/cpu]
+type = internal/cpu
+label =  %percentage%%
+
+; label-background = ${colors.blurred30}
+; label-foreground = ${colors.white}
+
+
+[module/memory]
+type = internal/memory
+label =  %gb_used%
+
+; format-background = ${colors.blurred30}
+; format-foreground = ${colors.white}
+
+[module/network]
+type = internal/network
+interface = wlp2s0
+label-connected =  %downspeed% |  %upspeed%
+
+; label-background = ${colors.blurred30}
+; label-foreground = ${colors.white}
+
+; [module/sysupdate]
+; type = custom/script
+; exec = /bin/sh /home/kelsnare/.scripts/statusbar/systemupdates
+; interval = 900
+
+; label-background = ${colors.blurred30}
+; label-foreground = ${colors.white}
+
+
+; [bar/float]
+; inherit = bar/white
+; background = #ffffff
+; tray-position = center
